@@ -2,6 +2,29 @@
 ssh root@31.97.93.136
 senha:Fc0aFWf'RPONn'q0k9.w
 
+ssh-keygen -t ed25519 -C "adilson.gditecnologia@gmail.com"
+
+
+
+CREATE USER 'admin'@'%' IDENTIFIED BY 'Lcrc253647mj_';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+INSERT INTO users (
+    name,
+    email,
+    password,
+    created_at,
+    updated_at
+) VALUES (
+    'adilson.pina',
+    'adilson.pina@aspti.com.br',
+    '$2y$12$B0PD/wzA49Hs7Ihwu/D8xepEAA9HpwBqMWRprJw2T8x2eLYLcmaOu',
+    NOW(),
+    NOW()
+);
+
 
 composer create-project laravel/laravel .
 
@@ -50,7 +73,14 @@ php artisan make:controller Api/ArquivoController
 php artisan make:controller Api/ProjetoAnotacaoController --api
 php artisan make:controller Api/DashboardController
 
-
+php artisan make:controller Admin/DashboardController
+php artisan make:controller Admin/EmpresaController --resource
+php artisan make:controller Admin/UsuarioController --resource
+php artisan make:controller Admin/ClienteController --resource
+php artisan make:controller Admin/ProjetoController --resource
+php artisan make:controller Admin/FornecedorController --resource
+php artisan make:controller Admin/FinanceiroController --resource
+php artisan make:controller Admin/ArquivoController --resource
 
 New-Item app\Services\AuthService.php
 New-Item app\Services\EmpresaService.php
