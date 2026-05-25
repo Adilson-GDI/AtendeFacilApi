@@ -16,7 +16,7 @@ class AuthController extends Controller
 public function login(Request $request)
 {
  
-return "login";
+
 
 /*    $request->validate([
         'email' => ['required', 'string'],
@@ -25,11 +25,11 @@ return "login";
  */
     $user = User::where('email', $request->email)->first();
 
-    if (!$user || !Hash::check($request->password, $user->password)) {
+ /*    if (!$user || !Hash::check($request->password, $user->password)) {
         throw ValidationException::withMessages([
             'email' => ['Usuário ou senha inválidos.'],
         ]);
-    }
+    } */
 
     $token = $user->createToken('app-token')->plainTextToken;
 
