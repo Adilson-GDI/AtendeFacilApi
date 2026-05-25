@@ -10,30 +10,33 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
 
-        $user = User::where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['E-mail ou senha inválidos.'],
-            ]);
-        }
 
-        $token = $user->createToken('app-token')->plainTextToken;
+public function login(Request $request)
+{
+    $request->validate([
+        'email' => ['required', 'string'],
+        'password' => ['required', 'string'],
+    ]);
 
-        return response()->json([
-            'status' => true,
-            'message' => 'Login realizado com sucesso.',
-            'token' => $token,
-            'user' => $user,
+    $user = User::where('email', $request->email)->first();
+
+    if (!$user || !Hash::check($request->password, $user->password)) {
+        throw ValidationException::withMessages([
+            'email' => ['Usuário ou senha inválidos.'],
         ]);
     }
+
+    $token = $user->createToken('app-token')->plainTextToken;
+
+    return response()->json([
+        'status' => true,
+        'message' => 'Login realizado com sucesso.',
+        'token' => $token,
+        'user' => $user,
+    ]);
+}
 
     public function me(Request $request)
     {

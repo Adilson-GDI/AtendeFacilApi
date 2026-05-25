@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\ArquivoController;
 use App\Http\Controllers\Api\ProjetoAnotacaoController;
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/teste', [AuthController::class, 'teste']);
 Route::post('/registrar', [AuthController::class, 'registrar']);
 
 Route::middleware('auth:sanctum')->group(function () {
