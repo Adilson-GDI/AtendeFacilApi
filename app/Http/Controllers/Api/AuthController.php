@@ -15,7 +15,7 @@ class AuthController extends Controller
 
 public function login(Request $request)
 {
-    $request->validate([
+  /*   $request->validate([
         'email' => ['required', 'string'],
         'password' => ['required', 'string'],
     ]);
@@ -26,7 +26,7 @@ public function login(Request $request)
         throw ValidationException::withMessages([
             'email' => ['Usuário ou senha inválidos.'],
         ]);
-    }
+    } */
 
     $token = $user->createToken('app-token')->plainTextToken;
 

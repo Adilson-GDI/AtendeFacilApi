@@ -26,6 +26,15 @@ INSERT INTO users (
 );
 
 
+UPDATE users
+SET password = '$2y$12$Gql1iR8U4K5VVRHeNq6FGea3GgGfJHkcG2sGKwfohE80PVNro6Uji'
+WHERE email = 'email@teste.com';
+
+
+php artisan tinker
+
+Hash::make('2536477431');
+
 composer create-project laravel/laravel .
 
 
