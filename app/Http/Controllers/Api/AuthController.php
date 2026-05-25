@@ -55,4 +55,11 @@ public function login(Request $request)
             'message' => 'Logout realizado com sucesso.',
         ]);
     }
+
+
+        public function teste(Request $request)
+    {
+        return "teste";
+    }
+
 }
