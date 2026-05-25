@@ -28,7 +28,7 @@ INSERT INTO users (
 
 UPDATE users
 SET password = '$2y$12$Gql1iR8U4K5VVRHeNq6FGea3GgGfJHkcG2sGKwfohE80PVNro6Uji'
-WHERE email = 'email@teste.com';
+WHERE email = 'adilson.pina@aspti.com.br';
 
 
 php artisan tinker
