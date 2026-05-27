@@ -104,3 +104,34 @@ New-Item app\Services\FornecedorService.php
 New-Item app\Services\ProjetoFinanceiroService.php
 New-Item app\Services\ArquivoService.php
 New-Item app\Services\DashboardService.php
+
+
+
+php artisan make:model FcmToken -m
+php artisan make:model PushLog -m
+php artisan make:model PushImage -m
+php artisan make:model  PushSchedule -m
+php artisan make:model PushToken -m
+
+
+php artisan make:controller Api/PushTokenController
+php artisan make:controller Admin/PushController
+php artisan make:controller Admin/PushImageController
+
+New-Item app\Services\FirebasePushService.php
+
+
+composer require google/apiclient
+
+
+mkdir resources\views\admin\layouts
+mkdir resources\views\admin\partials
+mkdir resources\views\admin\push
+
+New-Item resources\views\admin\layouts\app.blade.php
+New-Item resources\views\admin\partials\sidebar.blade.php
+New-Item resources\views\admin\partials\topbar.blade.php
+New-Item resources\views\admin\partials\footer.blade.php
+New-Item resources\views\admin\push\index.blade.php
+
+New-Item resources\views\admin\dashboard\index.blade.php

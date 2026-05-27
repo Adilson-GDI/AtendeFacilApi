@@ -16,10 +16,18 @@ use App\Http\Controllers\Api\ProjetoFornecedorController;
 use App\Http\Controllers\Api\ProjetoFinanceiroController;
 use App\Http\Controllers\Api\ArquivoController;
 use App\Http\Controllers\Api\ProjetoAnotacaoController;
+use App\Http\Controllers\Api\PushTokenController;
+use App\Http\Controllers\Admin\PushController;
+
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/teste', [AuthController::class, 'teste']);
 Route::post('/registrar', [AuthController::class, 'registrar']);
+
+
+
+Route::post('/push/token', [PushTokenController::class, 'store']);
+Route::delete('/push/token', [PushTokenController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -42,4 +50,13 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/arquivos/upload', [ArquivoController::class, 'upload']);
     Route::delete('/arquivos/{arquivo}', [ArquivoController::class, 'destroy']);
+
+
+    Route::get('/push', [PushController::class, 'index'])->name('push.index');
+Route::post('/push/send', [PushController::class, 'send'])->name('push.send');
+Route::get('/push/resend/{id}', [PushController::class, 'resend'])->name('push.resend');
+
+
+
+
 });
